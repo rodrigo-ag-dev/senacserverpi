@@ -1,7 +1,8 @@
 {
   "license": "ISC",
   "scripts": {
-    "start": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
   },
   "dependencies": {
     "axios": "^0.21.1",
