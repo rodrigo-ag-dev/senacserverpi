@@ -5,8 +5,9 @@ const authConfig = require('../config/auth.json')
 module.exports = {
     async create(req, res) {
         const { email, password } = req.headers
+        console.log(email)
         const reg = await connection('users')
-            .join('student', 'student.id', 'user.id')
+            .join('student', 'student.id', 'users.id')
             .select(['users.id', 'users.name', 'users.password', 'student.image'])
             .where('email', email)
             .first()
