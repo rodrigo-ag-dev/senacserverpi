@@ -6,8 +6,9 @@ module.exports = {
     async create(req, res) {
         const { email, password } = req.headers
         const reg = await connection('users')
+            .join('student', 'student.id', 'user.id')
+            .select(['users.id', 'users.name', 'users.password', 'student.image'])
             .where('email', email)
-            .select(['id', 'name', 'password'])
             .first()
         if (!reg)
             return res.status(401).json({ error: 'Usuário não encontrado!' })
