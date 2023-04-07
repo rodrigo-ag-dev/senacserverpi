@@ -8,7 +8,7 @@ module.exports = {
         console.log(email)
         const reg = await connection('users')
             .join('student', 'student.id', 'users.id')
-            .select(['users.id', 'users.name', 'users.password', 'student.image'])
+            .select(['users.id', 'student.name', 'users.password', 'student.image'])
             .where('email', email)
             .first()
         if (!reg)

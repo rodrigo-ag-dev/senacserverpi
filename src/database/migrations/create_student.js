@@ -3,6 +3,10 @@ exports.up = function (knex) {
         table.string('id').notNullable()
         table.string('name').notNullable()
         table.string('state').notNullable()
+        table.string('phone').notNullable()
+        table.string('city').notNullable()
+        table.string('uf').notNullable()
+        table.string('image')
     })
 };
 

@@ -3,6 +3,7 @@ exports.up = function (knex) {
         table.string('id').notNullable()
         table.string('name').notNullable()
         table.string('state').notNullable()
+        table.string('idteacher').notNullable()
     })
 };
 
