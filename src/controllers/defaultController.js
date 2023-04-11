@@ -22,15 +22,17 @@ const update = async (table, req, res, requiredFields) => {
   return res.status(202).send()
 }
 
-const pull = async (table, req, res) => {
+const pull = async (table, req, res, filter = null) => {
   const data = async () => {
     const { id } = req.params
     const { name, fields } = req.query
-    const sql = () => connection(table).select(fields? fields : '*').orderBy('name')
+    const sql = () => connection(table).select(fields ? fields : '*').orderBy('name')
     if (id)
       return await sql().where({ id })
     else if (name)
       return await sql().where('name', 'like', `%${name}%`)
+    else if (filter)
+      return await sql().where(filter)
     else
       return await sql()
   }

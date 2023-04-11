@@ -1,4 +1,4 @@
-const { insert, update, pull, remove } = require("./defaultController")
+const { insert, update, pull, remove } = require("./DefaultController")
 
 module.exports = {
     async insert(req, res) {

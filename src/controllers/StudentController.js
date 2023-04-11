@@ -1,6 +1,5 @@
 const fs = require('fs')
-const { insert, update, pull, remove } = require("./defaultController")
-const { decodeBase64 } = require('bcryptjs')
+const { insert, update, pull, remove } = require("./DefaultController")
 
 module.exports = {
     async insert(req, res) {
