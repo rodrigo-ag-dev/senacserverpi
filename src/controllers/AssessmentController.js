@@ -4,20 +4,21 @@ const { insert, update, remove } = require("./DefaultController")
 
 const pull = async (req, res) => {
   const data = async () => {
-    const { id, idsubject } = req.params
+    const { idstudent } = req.query
+    const { idsubject } = req.params
     const sql = () => connection('assessment')
       .select('assessment.idassessmenttype', 'assessment_type.description', 'assessment.value', 'assessment_type.weight')
       .join('assessment_type', 'assessment_type.id', 'assessment.idassessmenttype')
       .orderBy('assessment.idassessmenttype')
 
-    if (idsubject)
+    if (idsubject && !idstudent)
       return await sql().where({ idsubject })
-    else if (id)
-      return await sql().where({ id })
+    else if (idsubject && idstudent)
+      return await sql().where({ idsubject, idstudent })
     else
       return await sql()
   }
-  return await pagination(await data(), req, res)
+  return res.status(201).json(await data())
 }
 
 module.exports = {
@@ -31,8 +32,6 @@ module.exports = {
     return pull(req, res)
   },
   async pullSubject(req, res) {
-    req.params.idsubject = req.params.id
-    req.params.id = null
     return pull(req, res)
   },
   async remove(req, res) {

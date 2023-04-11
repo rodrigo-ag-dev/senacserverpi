@@ -38,7 +38,7 @@ routes.delete('/teacher/:id', TeacherController.remove)
 routes.post('/teacher', TeacherController.insert)
 routes.put('/teacher', TeacherController.update)
 
-routes.get('/assessment/subject/:id', AssessmentController.pullSubject)
+routes.get('/assessment/subject/:idsubject', AssessmentController.pullSubject)
 routes.get('/assessment/:id', AssessmentController.pull)
 routes.get('/assessment', AssessmentController.pull)
 routes.delete('/assessment/:id', AssessmentController.remove)
