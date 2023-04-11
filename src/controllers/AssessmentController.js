@@ -6,7 +6,7 @@ const pull = async (req, res) => {
   const data = async () => {
     const { id, idsubject } = req.params
     const sql = () => connection('assessment')
-      .select('assessment.idassessmenttype', 'assessment_type.description', 'assessment.value')
+      .select('assessment.idassessmenttype', 'assessment_type.description', 'assessment.value', 'assessment_type.weight')
       .join('assessment_type', 'assessment_type.id', 'assessment.idassessmenttype')
       .orderBy('assessment.idassessmenttype')
 
