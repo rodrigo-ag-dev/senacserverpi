@@ -8,7 +8,7 @@ const pull = async (req, res) => {
     const sql = () => connection('assessment')
       .select('assessment.idassessmenttype', 'assessment_type.description', 'assessment.value')
       .join('assessment_type', 'assessment_type.id', 'assessment.idassessmenttype')
-      .orderBy('assessment_type.description')
+      .orderBy('assessment.idassessmenttype')
 
     if (idsubject)
       return await sql().where({ idsubject })
