@@ -14,7 +14,7 @@ module.exports = {
         if (!reg)
             return res.status(401).json({ error: 'Usuário não encontrado!' })
         if (password.localeCompare(reg.password, undefined, { sensitivity: 'accent' }) > 0)
-            return res.status(401).json({ error: 'Senha inválida!' })
+            return res.status(401).json({ error: 'Não autorizado, verifique o usuário e a senha.' })
         reg.password = undefined
         const token = jwt.sign({ id: res.id }, authConfig.secret, { expiresIn: '9999 years' })
         return res.send({ reg, token })
