@@ -7,6 +7,7 @@ const SubjectController = require('./controllers/SubjectController.js')
 const StudentController = require('./controllers/StudentController.js')
 const TeacherController = require('./controllers/TeacherController.js')
 const AssessmentController = require('./controllers/AssessmentController.js')
+const CoursewareController = require('./controllers/coursewareController.js')
 
 const routes = express()
 routes.use(express.json())
@@ -44,5 +45,8 @@ routes.get('/assessment', AssessmentController.pull)
 routes.delete('/assessment/:id', AssessmentController.remove)
 routes.post('/assessment', AssessmentController.insert)
 routes.put('/assessment', AssessmentController.update)
+
+routes.get('/courseware/subject/:idsubject', CoursewareController.pullSubject)
+routes.get('/courseware/:id', CoursewareController.pull)
 
 module.exports = routes
