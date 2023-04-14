@@ -5,7 +5,11 @@ const authConfig = require('../config/auth.json')
 module.exports = {
     async create(req, res) {
         const { email, password } = req.headers
-        console.log(email)
+        if (!email)
+            return res.status(401).json({ error: 'Informe um e-mail.' })
+        if (!password)
+            return res.status(401).json({ error: 'Informe a senha.' })
+
         const reg = await connection('users')
             .join('student', 'student.id', 'users.id')
             .select(['users.id', 'student.name', 'users.password', 'student.image'])
