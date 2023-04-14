@@ -1,4 +1,3 @@
-const { pagination } = require("./Pagination")
 const connection = require('../database/connection.js')
 const { insert, update, remove } = require("./DefaultController")
 

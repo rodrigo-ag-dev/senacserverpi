@@ -7,7 +7,7 @@ const SubjectController = require('./controllers/SubjectController.js')
 const StudentController = require('./controllers/StudentController.js')
 const TeacherController = require('./controllers/TeacherController.js')
 const AssessmentController = require('./controllers/AssessmentController.js')
-const CoursewareController = require('./controllers/coursewareController.js')
+const CoursewareController = require('./controllers/CoursewareController.js')
 
 const routes = express()
 routes.use(express.json())
