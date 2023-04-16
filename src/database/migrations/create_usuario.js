@@ -3,6 +3,7 @@ exports.up = function (knex) {
         table.integer('codigo')
         table.string('email', 255)
         table.string('password', 100)
+        table.primary(['codigo'])
     })
 };
 
