@@ -1,10 +1,12 @@
 exports.up = function (knex) {
-    return knex.schema.createTable('avaliacao', (table) => {
-        table.integer('codigo')
-        table.integer('codigo_aluno')
-        table.integer('codigo_disciplina')
-        table.integer('codigo_tipo_avaliacao')
-        table.decimal('nota')
+    return knex.schema.createTable('avaliacao', (t) => {
+        t.integer('codigo')
+        t.integer('codigo_aluno')
+        t.integer('codigo_disciplina')
+        t.integer('codigo_tipo_avaliacao')
+        t.decimal('nota')
+        t.primary(['codigo'])
+        t.index(['codigo_disciplina', 'codigo_aluno'], 'analiacao_codigos_idx')
     })
 };
 

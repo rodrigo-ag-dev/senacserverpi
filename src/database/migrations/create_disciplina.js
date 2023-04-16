@@ -1,9 +1,10 @@
 exports.up = function (knex) {
-    return knex.schema.createTable('disciplina', (table) => {
-        table.integer('codigo')
-        table.string('descricao', 100)
-        table.integer('codigo_professor')
-        table.integer('situacao')
+    return knex.schema.createTable('disciplina', (t) => {
+        t.integer('codigo')
+        t.string('descricao', 100)
+        t.integer('codigo_professor')
+        t.integer('situacao')
+        t.primary(['codigo'])
     })
 };
 

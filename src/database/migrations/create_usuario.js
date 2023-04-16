@@ -1,9 +1,10 @@
 exports.up = function (knex) {
-    return knex.schema.createTable('usuario', (table) => {
-        table.integer('codigo')
-        table.string('email', 255)
-        table.string('password', 100)
-        table.primary(['codigo'])
+    return knex.schema.createTable('usuario', (t) => {
+        t.integer('codigo')
+        t.string('email', 255)
+        t.string('password', 100)
+        t.primary(['codigo'])
+        t.index(['email'], 'usuario_email_idx')
     })
 };
 
