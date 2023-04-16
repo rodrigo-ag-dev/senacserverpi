@@ -1,12 +1,12 @@
 const connection = require('../database/connection.js')
-const { insert, update, remove } = require("./DefaultController")
+const { insert, update, remove } = require("./DefaultController.js")
 
 const pull = async (req, res) => {
   const data = async () => {
-    const { idsubject } = req.params
-    const sql = () => connection('courseware').select('*')
-    if (idsubject)
-      return await sql().where({ idsubject })
+    const { id } = req.params
+    const sql = () => connection('material').select('*')
+    if (id)
+      return await sql().where({ "codigo": id })
     else
       return await sql()
   }
@@ -15,7 +15,7 @@ const pull = async (req, res) => {
     const fs = require('fs');
     const path = require('path');
     const responseJson = responseData.map(e => {
-      const _path = path.join(__dirname, '../../documents/' + e.file)
+      const _path = path.join(__dirname, '../../documents/' + e.arquivo)
       if (!fs.existsSync(_path)) {
         return res.status(404).json({ "error": `arquivo ${_path} não encontrado!` })
       } else {
@@ -39,7 +39,7 @@ module.exports = {
   async pull(req, res) {
     return pull(req, res)
   },
-  async pullSubject(req, res) {
+  async pullDisciplina(req, res) {
     return pull(req, res)
   },
   async remove(req, res) {

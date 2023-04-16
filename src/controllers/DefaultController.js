@@ -25,12 +25,18 @@ const update = async (table, req, res, requiredFields) => {
 const pull = async (table, req, res, filter = null) => {
   const data = async () => {
     const { id } = req.params
-    const { name, fields } = req.query
-    const sql = () => connection(table).select(fields ? fields : '*').orderBy('name')
+    const { nome, descricao, fields } = req.query
+
+    const sql = () => connection(table)
+      .select(fields ? fields : '*')
+      .orderBy('codigo')
+
     if (id)
-      return await sql().where({ id })
-    else if (name)
-      return await sql().where('name', 'like', `%${name}%`)
+      return await sql().where({ "codigo": id })
+    else if (nome)
+      return await sql().where('nome', 'like', `%${nome}%`)
+    else if (descricao)
+      return await sql().where('descricao', 'like', `%${nome}%`)
     else if (filter)
       return await sql().where(filter)
     else
@@ -41,10 +47,10 @@ const pull = async (table, req, res, filter = null) => {
 
 const remove = async (table, req, res) => {
   const { id } = req.params
-  const incident = await connection(table).select('id').where({ id }).first()
+  const incident = await connection(table).select('codigo').where({ "codigo": id }).first()
   if (!incident || !incident.id)
     return res.status(404).json({ error: 'Código não encontrado.' })
-  await connection(table).where({ id }).delete()
+  await connection(table).where({ "codigo": id }).delete()
   return res.status(204).send()
 }
 

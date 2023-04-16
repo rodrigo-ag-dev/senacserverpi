@@ -10,9 +10,9 @@ module.exports = {
         if (!password)
             return res.status(401).json({ error: 'Informe a senha.' })
 
-        const reg = await connection('users')
-            .join('student', 'student.id', 'users.id')
-            .select(['users.id', 'student.name', 'users.password', 'student.image'])
+        const reg = await connection('usuario')
+            .join('aluno', 'aluno.codigo', 'usuario.codigo')
+            .select(['usuario.codigo', 'aluno.nome', 'usuario.password', 'aluno.imagem'])
             .where('email', email)
             .first()
         if (!reg)
