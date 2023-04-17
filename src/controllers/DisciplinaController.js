@@ -10,6 +10,18 @@ module.exports = {
     async pull(req, res) {
         return pull('disciplina', req, res)
     },
+    async pullSemestre(req, res) {
+        const data = async () => {
+            const { id } = req.params
+            const { codigo_disciplina, semestre } = req.query
+
+            return connection('curso_disciplina')
+                .select(fields ? fields : '*')
+                .where('')
+                .orderBy('codigo')
+        }
+        return await pagination(await data(), req, res)
+    },
     async remove(req, res) {
         return remove('disciplina', req, res)
     }

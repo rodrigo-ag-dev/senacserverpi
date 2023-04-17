@@ -8,6 +8,7 @@ const ProfessorController = require('./controllers/ProfessorController.js')
 const DisciplinaController = require('./controllers/DisciplinaController.js')
 const AvaliacaoController = require('./controllers/AvaliacaoController.js')
 const MaterialController = require('./controllers/MaterialController.js')
+const CursoController = require('./controllers/CursoController.js')
 
 const routes = express()
 routes.use(express.json())
@@ -48,5 +49,9 @@ routes.put('/avaliacao', AvaliacaoController.update)
 
 routes.get('/material/disciplina/:idsubject', MaterialController.pullDisciplina)
 routes.get('/material/:id', MaterialController.pull)
+
+routes.get('/curso/:id', CursoController.pull)
+routes.get('/curso/disciplina/:id', CursoController.pullDisciplina)
+
 
 module.exports = routes

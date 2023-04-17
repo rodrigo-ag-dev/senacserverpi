@@ -7,6 +7,8 @@ exports.up = function (knex) {
         t.string('uf', 2)
         t.string('imagem', 100)
         t.integer('situacao')
+        t.integer('codigo_curso')
+        t.integer('semestre')
         t.primary(['codigo'])
     })
 };

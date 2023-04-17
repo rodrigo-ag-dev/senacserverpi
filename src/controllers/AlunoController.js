@@ -3,7 +3,7 @@ const { insert, update, pull, remove } = require("./DefaultController")
 
 module.exports = {
     async insert(req, res) {
-        return insert('aluno', req, res, ['nome', 'email', 'password', 'cidade', 'uf', 'fone'])
+        return insert('aluno', req, res, ['nome', 'email', 'password', 'cidade', 'uf', 'fone', 'codigo_curso'])
     },
     async update(req, res) {
         return update('aluno', req, res, [])
