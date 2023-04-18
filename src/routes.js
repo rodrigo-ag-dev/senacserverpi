@@ -41,6 +41,7 @@ routes.post('/disciplina', DisciplinaController.insert)
 routes.put('/disciplina', DisciplinaController.update)
 
 routes.get('/avaliacao/historico/:id', AvaliacaoController.pullHistory)
+routes.get('/avaliacao/disciplina/:id', AvaliacaoController.pullDisciplina)
 routes.get('/avaliacao/:id', AvaliacaoController.pull)
 routes.get('/avaliacao', AvaliacaoController.pull)
 routes.delete('/avaliacao/:id', AvaliacaoController.remove)

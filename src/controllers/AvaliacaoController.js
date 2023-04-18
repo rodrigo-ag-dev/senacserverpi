@@ -71,6 +71,9 @@ module.exports = {
   async pull(req, res) {
     return pull(req, res)
   },
+  async pullDisciplina(req, res) {
+    return pull(req, res)
+  },
   async pullHistory(req, res) {
     return pullHistory(req, res)
   },
