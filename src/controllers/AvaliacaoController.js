@@ -57,8 +57,6 @@ const pullHistory = async (req, res) => {
       .orderBy('curso_disciplina.semestre')
       .orderBy('disciplina.descricao')
 
-    console.log(mainSql.toSQL().toNative())
-
     return await mainSql
   }
   return res.status(201).json(await data())
