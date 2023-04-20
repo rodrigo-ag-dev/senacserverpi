@@ -54,7 +54,7 @@ const pullHistory = async (req, res) => {
       .where(where)
       .where(connection.raw(where2))
       .whereNot(whereNot)
-      .orderBy('curso_disciplina.semestre')
+      .orderBy('curso_disciplina.semestre', 'desc')
       .orderBy('disciplina.descricao')
 
     return await mainSql
