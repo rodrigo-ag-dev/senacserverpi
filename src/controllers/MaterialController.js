@@ -9,7 +9,7 @@ const pull = async (req, res) => {
   const data = async (id) => {
     const sql = () => connection('material').select('*')
     if (id)
-      return await sql().where({ "codigo": id })
+      return await sql().where({ "codigo_disciplina": id })
     else
       return await sql()
   }
