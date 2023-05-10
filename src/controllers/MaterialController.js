@@ -2,20 +2,25 @@ const connection = require('../database/connection.js')
 const { insert, update, remove } = require("./DefaultController.js")
 
 const pull = async (req, res) => {
-  const data = async () => {
-    const { id } = req.params
+  const { idsubject } = req.params
+
+  console.log(req.params)
+
+  const data = async (id) => {
     const sql = () => connection('material').select('*')
     if (id)
       return await sql().where({ "codigo": id })
     else
       return await sql()
   }
-  const responseData = await data()
+
+  const responseData = await data(idsubject)
   if (responseData) {
     const fs = require('fs');
     const path = require('path');
     const responseJson = responseData.map(e => {
       const _path = path.join(__dirname, '../../documents/' + e.arquivo)
+      console.log('path', _path)
       if (!fs.existsSync(_path)) {
         return res.status(404).json({ "error": `arquivo ${_path} não encontrado!` })
       } else {
