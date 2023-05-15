@@ -15,7 +15,7 @@ module.exports = {
 
   production: {
     client: 'pg',
-    connection: process.env.DB_CONNECTION || 'postgres://rodrigo-ag-dev:kmTL5EiHWX9x@ep-frosty-bird-907998.us-east-2.aws.neon.tech/senacpi?ssl=true',
+    connection: process.env.DB_CONNECTION,
     migrations: { directory: './src/database/migrations' },
     useNullAsDefault: true,
   }
