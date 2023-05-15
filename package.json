@@ -1,8 +1,8 @@
 {
   "license": "ISC",
   "scripts": {
-    "dev": "nodemon src/index.js",
-    "start": "node src/index.js"
+    "dev": "nodemon src/api.js --env development",
+    "start": "nodemon src/api.js --env production"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -11,6 +11,6 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.95.2",
-    "sqlite3": "^5.0.2"
+    "pg": "^8.11.0"
   }
 }
