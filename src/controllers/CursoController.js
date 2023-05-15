@@ -19,11 +19,14 @@ module.exports = {
         if (semestre)
             where.semestre = semestre
 
-        const data = await connection('curso_disciplina')
+        const sql = connection('curso_disciplina')
             .select('curso_disciplina.codigo_disciplina', 'disciplina.descricao')
             .join('disciplina', 'disciplina.codigo', 'curso_disciplina.codigo_disciplina')
             .where(where)
             .orderBy('curso_disciplina.semestre', 'curso_disciplina.codigo_disciplina')
+
+        const data = await sql
+        console.log(data)
         return res.status(200).json(data)
     },
     async remove(req, res) {
