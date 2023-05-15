@@ -2,7 +2,7 @@
   "license": "ISC",
   "scripts": {
     "dev": "nodemon src/api.js --env development",
-    "start": "nodemon src/api.js --env production"
+    "start": "node src/api.js"
   },
   "dependencies": {
     "axios": "^0.21.1",
