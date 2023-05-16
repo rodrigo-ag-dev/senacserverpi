@@ -14,7 +14,7 @@
   ],
   "headers": [
     {
-      "source": "/api/(.*)",
+      "src": "src/api.js",
       "headers": [
         { "key": "Access-Control-Allow-Credentials", "value": "true" },
         { "key": "Access-Control-Allow-Origin", "value": "*" },
