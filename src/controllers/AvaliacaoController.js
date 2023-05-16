@@ -42,7 +42,7 @@ const pullHistory = async (req, res) => {
       where2 += `curso_disciplina.semestre < ${semestreanteriores}`
 
     const notaSql = connection('avaliacao')
-      .sum(connection.raw('avaliacao.nota * tipo_avaliacao.peso'))
+      .sum(connection.raw('cast(avaliacao.nota * tipo_avaliacao.peso as numeric(15,2))'))
       .join('tipo_avaliacao', 'tipo_avaliacao.codigo', 'avaliacao.codigo_tipo_avaliacao')
       .where({ "codigo_aluno": codigo_aluno })
       .where(connection.raw('codigo_disciplina = curso_disciplina.codigo_disciplina'))
