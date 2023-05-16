@@ -1,4 +1,5 @@
 const fs = require('fs')
+const path = require('path');
 const { insert, update, pull, remove } = require("./DefaultController")
 
 module.exports = {
@@ -16,9 +17,9 @@ module.exports = {
     },
     async image(req, res) {
         try {
-            const path = './images/'.concat(req.params.id)
-            if (fs.existsSync(path)) {
-                const base64 = "data:image/gif;base64," + fs.readFileSync(path, 'base64')
+            const file = path.join('.', 'images', req.params.id)
+            if (fs.existsSync(file)) {
+                const base64 = "data:image/gif;base64," + fs.readFileSync(file, 'base64')
                 return res.status(200).send({ "imagem": base64 });
             } else {
                 const base64 = "data:image/gif;base64," + fs.readFileSync('./images/no image.jpg', 'base64')
