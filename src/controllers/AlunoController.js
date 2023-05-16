@@ -22,7 +22,8 @@ module.exports = {
                 const base64 = "data:image/gif;base64," + fs.readFileSync(file, 'base64')
                 return res.status(200).send({ "imagem": base64 });
             } else {
-                const base64 = "data:image/gif;base64," + fs.readFileSync('./images/no image.jpg', 'base64')
+                const noFile = path.join(process.cwd(), 'images', 'no image.jpg')
+                const base64 = "data:image/gif;base64," + fs.readFileSync(noFile, 'base64')
                 return res.status(200).send({ "imagem": base64 });
             }
         } catch (err) {
