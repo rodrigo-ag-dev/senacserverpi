@@ -17,17 +17,13 @@ module.exports = {
     },
     async image(req, res) {
         try {
-            const file = path.join('.', 'images', req.params.id)
+            const file = path.join(process.cwd(), 'images', req.params.id)
             console.log(file)
             if (fs.existsSync(file)) {
-                console.log('base64')
                 const base64 = "data:image/gif;base64," + fs.readFileSync(file, 'base64')
-                console.log(base64)
                 return res.status(200).send({ "imagem": base64 });
             } else {
-                console.log('file not found')
                 const base64 = "data:image/gif;base64," + fs.readFileSync('./images/no image.jpg', 'base64')
-                console.log(base64)
                 return res.status(200).send({ "imagem": base64 });
             }
         } catch (err) {
