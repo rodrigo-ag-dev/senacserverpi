@@ -23,8 +23,11 @@ module.exports = {
                 return res.status(200).send({ "imagem": base64 });
             } else {
                 const noFile = path.join(process.cwd(), 'images', 'no image.jpg')
-                const base64 = "data:image/gif;base64," + fs.readFileSync(noFile, 'base64')
-                return res.status(200).send({ "imagem": base64 });
+                if (fs.existsSync(noFile)) {
+                    const base64 = "data:image/gif;base64," + fs.readFileSync(noFile, 'base64')
+                    return res.status(200).send({ "imagem": base64 });
+                } else
+                    return res.status(512).send({ "error": `File ${noFile} not found` });
             }
         } catch (err) {
             console.log(err);
