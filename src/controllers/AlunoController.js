@@ -18,7 +18,6 @@ module.exports = {
     async image(req, res) {
         try {
             const file = path.join(process.cwd(), 'images', req.params.id)
-            console.log(file)
             if (fs.existsSync(file)) {
                 const base64 = "data:image/gif;base64," + fs.readFileSync(file, 'base64')
                 return res.status(200).send({ "imagem": base64 });
