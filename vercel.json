@@ -9,13 +9,7 @@
   "routes": [
     {
       "src": "(.*)",
-      "dest": "src/api.js",
-      "headers": [
-        {
-          "key": "access-control-allow-origin",
-          "value": "*"
-        }
-      ]
+      "dest": "src/api.js"
     }
   ]
 }
