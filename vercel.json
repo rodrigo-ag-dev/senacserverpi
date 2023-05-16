@@ -3,7 +3,8 @@
   "builds": [
     {
       "src": "src/api.js",
-      "use": "@vercel/node"
+      "use": "@vercel/node",
+      "headers": [{"key": "Access-Control-Allow-Credentials","value": "true"}]
     }
   ],
   "routes": [
