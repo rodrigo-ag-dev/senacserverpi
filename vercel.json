@@ -1,13 +1,5 @@
 {
   "version": 2,
-  "headers": [
-    {
-      "source": "/functions",
-      "headers": [
-        { "key": "access-control-allow-origin", "value": "*" }
-      ]
-    }
-  ],
   "builds": [
     {
       "src": "src/api.js",
@@ -17,7 +9,17 @@
   "routes": [
     {
       "src": "(.*)",
-      "dest": "src/api.js"
+      "dest": "src/api.js""headers": [
+        {
+          "source": "/functions",
+          "headers": [
+            {
+              "key": "access-control-allow-origin",
+              "value": "*"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
