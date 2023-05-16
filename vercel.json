@@ -2,7 +2,7 @@
   "version": 2,
   "headers": [
     {
-      "source": "src/api.js",
+      "source": "/functions",
       "headers": [
         { "key": "access-control-allow-origin", "value": "*" }
       ]
